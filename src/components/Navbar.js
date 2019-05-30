@@ -17,15 +17,15 @@ const Navbar = class extends React.Component {
             <div className="site-mast-right">
             </div>
           </div>
-          {props.isHome ?
+          {this.props.isHome ?
             <div className="site-banner">
               <h1 className="site-banner-title">{useSiteMetadata().title}</h1>
               <p className="site-banner-desc">{useSiteMetadata().description}</p>
             </div> :
             null}
           <nav className="site-nav">
-            <Link to="/">Home</Link>
-            <Link to="https://www.chalarangelo.me/" target="_blank" rel="noopener noreferrer" className='site-nav-item'>Author</Link>
+            <Link to="/" className='site-nav-item'>Home</Link>
+            <a href="https://www.chalarangelo.me/" target="_blank" rel="noopener noreferrer" className='site-nav-item'>Author</a>
           </nav>
         </div>
       </header>
