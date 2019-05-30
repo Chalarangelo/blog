@@ -4,12 +4,13 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 
 const PostCard = ({ post }) => {
   const url = `/${post.fields.slug}/`
+  console.log(post)
   return (
     <Link to={url} className="post-card">
       <header className="post-card-header">
         {post.frontmatter.featuredimage &&
           <div className="post-card-image" style={{
-            backgroundImage: `url(${post.frontmatter.featuredimage})`,
+            backgroundImage: `url(${post.frontmatter.featuredimage.childImageSharp.fluid.src})`,
           }}></div>}
         {post.frontmatter.featuredpost && <span>Featured</span>}
         <h2 className="post-card-title">{post.title}</h2>
@@ -76,7 +77,7 @@ export default () => (
                 featuredpost
                 featuredimage {
                   childImageSharp {
-                    fluid(maxWidth: 120, quality: 100) {
+                    fluid(maxWidth: 800, quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }

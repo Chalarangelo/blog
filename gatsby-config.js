@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Barbecue Source',
     description:
-      'The JavaScript developer\'s barbecue.',
+      'A blog for developers by Angelos Chalaris.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
