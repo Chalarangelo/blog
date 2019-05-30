@@ -48,7 +48,6 @@ const TemplateWrapper = ({ isHome = false, children }) => {
         <meta property="og:title" content={title} />
         <meta property="og:url" content="/" />
         <meta property="og:image" content="/img/og-image.jpg" />
-        <body className={bodyClass} />
       </Helmet>
       <Navbar isHome={isHome} />
       <main className="site-main">
