@@ -2,52 +2,63 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
-import './all.sass'
+import './all.scss'
 import useSiteMetadata from './SiteMetadata'
 
-const TemplateWrapper = ({ children }) => {
+/**
+* Main layout component
+*
+* The Layout component wraps around each page and template.
+* It also provides the header, footer as well as the main
+* styles, and meta data for each page.
+*
+*/
+const TemplateWrapper = ({ isHome = false, children }) => {
   const { title, description } = useSiteMetadata()
   return (
-    <div>
+    <>
       <Helmet>
         <html lang="en" />
         <title>{title}</title>
         <meta name="description" content={description} />
-
         <link
           rel="apple-touch-icon"
           sizes="180x180"
-          href="/img/apple-touch-icon.png"
+          href="https://www.chalarangelo.me/assets/favicon.png"
         />
         <link
           rel="icon"
           type="image/png"
-          href="/img/favicon-32x32.png"
+          href="https://www.chalarangelo.me/assets/favicon.png"
           sizes="32x32"
         />
         <link
           rel="icon"
           type="image/png"
-          href="/img/favicon-16x16.png"
+          href="https://www.chalarangelo.me/assets/favicon.png"
           sizes="16x16"
         />
-
         <link
           rel="mask-icon"
-          href="/img/safari-pinned-tab.svg"
+          href="https://www.chalarangelo.me/assets/favicon.png"
           color="#ff4400"
         />
         <meta name="theme-color" content="#fff" />
-
-        <meta property="og:type" content="business.business" />
+        <meta property="og:type" content="website" />
         <meta property="og:title" content={title} />
         <meta property="og:url" content="/" />
         <meta property="og:image" content="/img/og-image.jpg" />
+        <body className={bodyClass} />
       </Helmet>
-      <Navbar />
-      <div>{children}</div>
-      <Footer />
-    </div>
+      <Navbar isHome={isHome} />
+      <main className="site-main">
+        {children}
+      </main>
+      <div className="viewport-bottom">
+        <Footer />
+      </div>
+      
+    </>
   )
 }
 
