@@ -18,7 +18,7 @@ const Navbar = ({ isHome }) => (
         </div> :
         null}
       <nav className="site-nav">
-        <Link to="/">Home</Link>
+        <Link className='site-nav-item' to="/">Home</Link>
         <a href="https://www.chalarangelo.me/" target="_blank" rel="noopener noreferrer" className='site-nav-item'>Author</a>
       </nav>
     </div>
