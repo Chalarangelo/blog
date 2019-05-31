@@ -20,10 +20,13 @@ const PostCard = ({ post }) => {
       <section className="post-card-excerpt">{post.excerpt}</section>
       <footer className="post-card-footer">
         <div className="post-card-footer-left">
-          <div className="post-card-avatar">
+          {/* <div className="post-card-avatar">
             <img className="author-profile-image" src="https://avatars2.githubusercontent.com/u/8281875?v=4" alt="Angelos Chalaris" />
           </div>
-          <span>Angelos Chalaris</span>
+          <span>Angelos Chalaris</span> */}
+          <div>
+            {post.frontmatter.date}
+          </div>
         </div>
         <div className="post-card-footer-right">
           <div>

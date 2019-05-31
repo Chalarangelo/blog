@@ -12,10 +12,27 @@ export const BlogPostTemplate = ({
   description,
   tags,
   title,
+  date,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
 
+  return (
+    <div className="container">
+      <article className="content">
+        <section className="post-full-content">
+          <h1 className="content-title">{title}</h1>
+          <p>{date}</p>
+          <section
+            className="content-body load-external-scripts"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
+        </section>
+      </article>
+    </div>
+  )
+
+/*
   return (
     <section className="section">
       {helmet || ''}
@@ -25,6 +42,7 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
+            <p>{date}</p>
             <p>{description}</p>
             <PostContent content={content} />
             {tags && tags.length ? (
@@ -44,6 +62,7 @@ export const BlogPostTemplate = ({
       </div>
     </section>
   )
+  */
 }
 
 BlogPostTemplate.propTypes = {
@@ -74,6 +93,7 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        date={post.frontmatter.date}
       />
     </Layout>
   )
