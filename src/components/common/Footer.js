@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import useSiteMetadata from './SiteMetadata'
+import useSiteMetadata from '../meta/SiteMetadata'
 
 const Footer = (props) => (
   <footer className="site-foot">

@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: 'Barbecue Source',
     description:
-      'A blog for developers by Angelos Chalaris.',
+      'Personal blog by Angelos Chalaris',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -62,12 +62,6 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-netlify-cms',
-    //   options: {
-    //     modulePath: `${__dirname}/src/cms/cms.js`,
-    //   },
-    // },
     {
       resolve: 'gatsby-plugin-purgecss', // purges all unused/unreferenced css rules
       options: {
@@ -75,6 +69,5 @@ module.exports = {
         purgeOnly: ['/all.scss'], // applies purging only on the bulma css file
       },
     }, // must be after other CSS plugins
-    // 'gatsby-plugin-netlify', // make sure to keep it last in the array
   ],
 }

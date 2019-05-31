@@ -1,7 +1,6 @@
 import React from 'react'
-import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Layout from '../components/common/Layout'
 import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 
 export const BlogPostTemplate = ({
@@ -10,14 +9,14 @@ export const BlogPostTemplate = ({
   tags,
   title,
   date,
-  helmet,
+  timeToRead
 }) => {
   return (
     <div className="container">
       <article className="content">
         <section className="post-full-content">
           <h1 className="content-title">{title}</h1>
-          <p>{date}</p>
+          <p className="content-meta">{date} · {timeToRead} min read</p>
           <section className="content-body load-external-scripts">
             <MDXRenderer>{content}</MDXRenderer>
           </section>
@@ -29,24 +28,23 @@ export const BlogPostTemplate = ({
 
 const BlogPost = ({ data }) => {
   const { mdx: post } = data
+  const meta = {
+    title: post.frontmatter.title,
+    description: post.frontmatter.description,
+    date: post.frontmatter.date,
+    tags: post.frontmatter.tags,
+    timeToRead: post.timeToRead
+  }
 
   return (
-    <Layout>
+    <Layout pageMeta={meta}>
       <BlogPostTemplate
         content={post.code.body}
         description={post.frontmatter.description}
-        helmet={
-          <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
-          </Helmet>
-        }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         date={post.frontmatter.date}
+        timeToRead={post.timeToRead}
       />
     </Layout>
   )

@@ -1,9 +1,9 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import './all.scss'
-import useSiteMetadata from './SiteMetadata'
+import Footer from './Footer'
+import Navbar from './Navbar'
+import '../../styles/all.scss'
+import useSiteMetadata from '../meta/SiteMetadata'
 
 /**
 * Main layout component
@@ -13,13 +13,17 @@ import useSiteMetadata from './SiteMetadata'
 * styles, and meta data for each page.
 *
 */
-const TemplateWrapper = ({ isHome = false, children }) => {
+const TemplateWrapper = ({ 
+  isHome = false, 
+  pageMeta,
+  children 
+}) => {
   const { title, description } = useSiteMetadata()
   return (
     <>
       <Helmet>
         <html lang="en" />
-        <title>{title}</title>
+        <title>{isHome ? title : `${pageMeta.title} — ${title}`}</title>
         <meta name="description" content={description} />
         <link
           rel="apple-touch-icon"

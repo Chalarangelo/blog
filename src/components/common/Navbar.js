@@ -1,12 +1,13 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import useSiteMetadata from './SiteMetadata'
-import github from '../img/social/github.svg'
-import twitter from '../img/social/twitter.svg'
-import email from '../img/social/mail.svg'
-import linkedin from '../img/social/linkedin.svg'
-import codepen from '../img/social/codepen.svg'
-import splash from '../img/pankaj-patel-516695-unsplash.jpeg'
+import useSiteMetadata from '../meta/SiteMetadata'
+
+import github from '../../img/social/github.svg'
+import twitter from '../../img/social/twitter.svg'
+import email from '../../img/social/mail.svg'
+import linkedin from '../../img/social/linkedin.svg'
+import codepen from '../../img/social/codepen.svg'
+import splash from '../../img/pankaj-patel-516695-unsplash.jpeg'
 
 const Navbar = ({ isHome }) => (
   <header className="site-head" style={{ backgroundImage: `url(${splash})` }}>

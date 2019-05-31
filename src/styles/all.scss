@@ -576,8 +576,8 @@ h6 {
 }
 
 .content-title {
-    margin: 0 0 0.8em;
-    font-size: 5rem;
+    margin: 0 0 0.3em;
+    font-size: 4.5rem;
 }
 @media (max-width: 500px) {
     .content-title {
@@ -664,6 +664,10 @@ h6 {
     width: 100%;
     height: 500px;
     object-fit: cover;
+}
+.content-meta { 
+    color: var(--color-secondary);
+    font-size: 16px;
 }
 /* Header
 /* ---------------------------------------------------------- */
