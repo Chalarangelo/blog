@@ -16,7 +16,7 @@
 
 .content {
     margin: 0 auto;
-    font-size: 2rem;
+    font-size: 1.6rem;
     line-height: 1.7em;
 }
 
@@ -150,7 +150,7 @@
 }
 .content-meta { 
     color: var(--color-secondary);
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .site-main {
@@ -160,4 +160,13 @@
 /* purgecss ignore */
 .gatsby-resp-image-wrapper {
     width: 100%;
+    margin: 0 0 3vw;
+}
+/* purgecss ignore */
+@media (min-width: 900px) {
+    /* purgecss ignore */
+    .gatsby-resp-image-wrapper {
+        width: 800px;
+        left: -40px;
+    }
 }
