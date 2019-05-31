@@ -6,15 +6,19 @@ import twitter from '../img/social/twitter.svg'
 import email from '../img/social/mail.svg'
 import linkedin from '../img/social/linkedin.svg'
 import codepen from '../img/social/codepen.svg'
+import splash from '../img/pankaj-patel-516695-unsplash.jpeg'
 
 const Navbar = ({ isHome }) => (
-  <header className="site-head">
+  <header className="site-head" style={{ backgroundImage: `url(${splash})` }}>
     <div className="container">
       <div className="site-mast">
         <div className="site-mast-left">
+          {!isHome ? 
+            <Link className='site-nav-item site-nav-title' to="/">{useSiteMetadata().title}</Link> :
+          null}
         </div>
         <div className="site-mast-right">
-          <a href="mailto:chalarangelo@gmail.com" className="site-nav-item" target="_blank" rel="noopener noreferrer">
+          <a href="mailto:chalarangelo@gmail.com" className="site-nav-item" target="_blank">
             <img className="site-nav-icon" src={email} alt="E-mail" style={{width: '16px'}}/>
           </a>
           <a href="https://github.com/Chalarangelo" className="site-nav-item" target="_blank" rel="noopener noreferrer">

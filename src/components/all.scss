@@ -666,6 +666,10 @@ h6 {
     padding-bottom: 20px;
     color: #fff;
     background: var(--color-base);
+    background-position-x: center;
+    background-position-y: bottom;
+    background-size: cover;
+    background-blend-mode: soft-light;
 }
 
 .site-nav-item {
@@ -756,6 +760,11 @@ h6 {
 
 .site-nav-button:hover {
     text-decoration: none;
+}
+
+.site-nav-title {
+    margin-left: -10px;
+    font-size: 1.9rem;
 }
 
 /* Main
