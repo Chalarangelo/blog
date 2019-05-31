@@ -1,22 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 
 export const BlogPostTemplate = ({
   content,
-  contentComponent,
   description,
   tags,
   title,
   date,
   helmet,
 }) => {
-  const PostContent = contentComponent || Content
-
   return (
     <div className="container">
       <article className="content">
@@ -25,44 +21,13 @@ export const BlogPostTemplate = ({
           <p>{date}</p>
           <section
             className="content-body load-external-scripts"
-            dangerouslySetInnerHTML={{ __html: content }}
-          />
+          >
+            <MDXRenderer>{content}</MDXRenderer>
+          </section>
         </section>
       </article>
     </div>
   )
-
-/*
-  return (
-    <section className="section">
-      {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{date}</p>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-  */
 }
 
 BlogPostTemplate.propTypes = {
@@ -74,13 +39,12 @@ BlogPostTemplate.propTypes = {
 }
 
 const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { mdx: post } = data
 
   return (
     <Layout>
       <BlogPostTemplate
-        content={post.html}
-        contentComponent={HTMLContent}
+        content={post.code.body}
         description={post.frontmatter.description}
         helmet={
           <Helmet titleTemplate="%s | Blog">
@@ -101,7 +65,7 @@ const BlogPost = ({ data }) => {
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
+    mdx: PropTypes.object,
   }),
 }
 
@@ -109,9 +73,11 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+    mdx(id: { eq: $id }) {
       id
-      html
+      code {
+        body
+      }
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         title

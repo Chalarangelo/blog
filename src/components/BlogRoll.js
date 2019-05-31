@@ -30,7 +30,7 @@ const PostCard = ({ post }) => {
         </div>
         <div className="post-card-footer-right">
           <div>
-            {readingTime(post.html).text}
+            {readingTime(post.code.body).text}
           </div>
         </div>
       </footer>
@@ -42,7 +42,7 @@ const PostCard = ({ post }) => {
 class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+    const { edges: posts } = data.allMdx
 
     return (
       <div className="container">
@@ -59,7 +59,7 @@ class BlogRoll extends React.Component {
 
 BlogRoll.propTypes = {
   data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
+    allMdx: PropTypes.shape({
       edges: PropTypes.array,
     }),
   }),
@@ -69,7 +69,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
-        allMarkdownRemark(
+        allMdx(
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
         ) {
@@ -77,7 +77,9 @@ export default () => (
             node {
               excerpt(pruneLength: 400)
               id
-              html
+              code {
+                body
+              }
               fields {
                 slug
               }

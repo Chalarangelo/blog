@@ -32,9 +32,10 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: 'gatsby-mdx',
       options: {
-        plugins: [
+        extensions: [`.mdx`, `.md`],
+        gatsbyRemarkPlugins: [
           'gatsby-remark-unwrap-images',
           {
             resolve: 'gatsby-remark-relative-images',
