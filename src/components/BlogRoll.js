@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
+import readingTime from 'reading-time'
+
 
 const PostCard = ({ post }) => {
   const url = `/${post.fields.slug}/`
@@ -13,7 +15,7 @@ const PostCard = ({ post }) => {
             backgroundImage: `url(${post.frontmatter.featuredimage.childImageSharp.fluid.src})`,
           }}></div>}
         {post.frontmatter.featuredpost && <span>Featured</span>}
-        <h2 className="post-card-title">{post.title}</h2>
+        <h2 className="post-card-title">{post.frontmatter.title}</h2>
       </header>
       <section className="post-card-excerpt">{post.excerpt}</section>
       <footer className="post-card-footer">
@@ -22,6 +24,11 @@ const PostCard = ({ post }) => {
             <img className="author-profile-image" src="https://avatars2.githubusercontent.com/u/8281875?v=4" alt="Angelos Chalaris" />
           </div>
           <span>Angelos Chalaris</span>
+        </div>
+        <div className="post-card-footer-right">
+          <div>
+            {readingTime(post.html).text}
+          </div>
         </div>
       </footer>
     </Link>
@@ -67,6 +74,7 @@ export default () => (
             node {
               excerpt(pruneLength: 400)
               id
+              html
               fields {
                 slug
               }
