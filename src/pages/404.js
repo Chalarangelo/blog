@@ -3,7 +3,13 @@ import { Link } from 'gatsby'
 import Layout from '../components/common/Layout'
 
 const NotFoundPage = () => (
-  <Layout>
+  <Layout pageMeta={{
+    title: '404: Page not found',
+    description: 'Page not found!',
+    date: '',
+    tags: [],
+    timeToRead: 0
+  }}>
     <div className="container">
       <article className="content" style={{ textAlign: `center` }}>
         <h1 className="content-title">Error 404</h1>

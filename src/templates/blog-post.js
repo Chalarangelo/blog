@@ -33,7 +33,8 @@ const BlogPost = ({ data }) => {
     description: post.frontmatter.description,
     date: post.frontmatter.date,
     tags: post.frontmatter.tags,
-    timeToRead: post.timeToRead
+    timeToRead: post.timeToRead,
+    featuredImage: post.frontmatter.featuredImage
   }
 
   return (
@@ -65,6 +66,13 @@ export const pageQuery = graphql`
         title
         description
         tags
+        featuredimage {
+          childImageSharp {
+            fluid(maxWidth: 800, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
