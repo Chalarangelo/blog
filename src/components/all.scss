@@ -1032,3 +1032,7 @@ h6 {
 .site-foot-nav-right a:last-child {
     padding-right: 0;
 }
+/* purgecss ignore */
+.gatsby-resp-image-wrapper {
+    width: 100%;
+}
