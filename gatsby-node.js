@@ -22,6 +22,7 @@ exports.createPages = ({ actions, graphql }) => {
             code {
               scope
             }
+            timeToRead
             fields {
               slug
             }
@@ -38,7 +39,7 @@ exports.createPages = ({ actions, graphql }) => {
       result.errors.forEach(e => console.error(e.toString()))
       return Promise.reject(result.errors)
     }
-
+    console.log(JSON.stringify(result.data.allMdx[0]));
     const posts = result.data.allMdx.edges
 
     posts.forEach(edge => {

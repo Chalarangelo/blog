@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
-import readingTime from 'reading-time'
 
 
 const PostCard = ({ post }) => {
@@ -30,7 +29,7 @@ const PostCard = ({ post }) => {
         </div>
         <div className="post-card-footer-right">
           <div>
-            {readingTime(post.code.body).text}
+            {post.timeToRead} min read
           </div>
         </div>
       </footer>
@@ -77,6 +76,7 @@ export default () => (
             node {
               excerpt(pruneLength: 400)
               id
+              timeToRead
               code {
                 body
               }

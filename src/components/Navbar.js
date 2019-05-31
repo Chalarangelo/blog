@@ -18,7 +18,7 @@ const Navbar = ({ isHome }) => (
           null}
         </div>
         <div className="site-mast-right">
-          <a href="mailto:chalarangelo@gmail.com" className="site-nav-item" target="_blank">
+          <a href="mailto:chalarangelo@gmail.com" className="site-nav-item" target="_blank" rel="noopener noreferrer">
             <img className="site-nav-icon" src={email} alt="E-mail" style={{width: '16px'}}/>
           </a>
           <a href="https://github.com/Chalarangelo" className="site-nav-item" target="_blank" rel="noopener noreferrer">
