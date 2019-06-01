@@ -15,7 +15,7 @@ const TagRoute = (props) => {
   } tagged in “${tag}”`
 
   return (
-    <Layout pageMeta={{ featuredImage: splash }}>
+    <Layout pageMeta={{ featuredImage: splash, title: tag }}>
       <div className="container">
         <h3 className="tag-title">{tagHeader}</h3>
         <section className="post-feed">

@@ -4,6 +4,7 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 import '../../styles/all.scss'
 import useSiteMetadata from '../meta/SiteMetadata'
+import splash from '../img/pankaj-patel-516695-unsplash.jpeg'
 
 /**
 * Main layout component
@@ -19,7 +20,7 @@ const TemplateWrapper = ({
   children 
 }) => {
   const { title, description } = useSiteMetadata()
-  const featuredImage = !isHome && pageMeta.featuredImage ? pageMeta.featuredImage : "https://avatars2.githubusercontent.com/u/8281875?v=4"
+  const featuredImage = !isHome && pageMeta.featuredImage ? pageMeta.featuredImage : splash
   return (
     <>
       <Helmet>
