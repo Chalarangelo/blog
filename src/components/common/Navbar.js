@@ -45,6 +45,7 @@ const Navbar = ({ isHome }) => (
       <nav className="site-nav">
         <div className="site-nav-left">
           <Link className='site-nav-item' to="/">Home</Link>
+          <Link className='site-nav-item' to="/tags">Tags</Link>
           <a href="https://www.chalarangelo.me/" target="_blank" rel="noopener noreferrer" className='site-nav-item'>Author</a>
         </div>
       </nav>

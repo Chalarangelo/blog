@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/common/Layout'
-import MDXRenderer from 'gatsby-mdx/mdx-renderer'
 
 export const BlogPostTemplate = ({
   content,
@@ -17,9 +16,10 @@ export const BlogPostTemplate = ({
         <section className="post-full-content">
           <h1 className="content-title">{title}</h1>
           <p className="content-meta">{date} · {timeToRead} min read</p>
-          <section className="content-body load-external-scripts">
-            <MDXRenderer>{content}</MDXRenderer>
-          </section>
+          <section 
+            className="content-body load-external-scripts" 
+            dangerouslySetInnerHTML={{__html: content}}
+          />
         </section>
       </article>
     </div>
@@ -27,7 +27,7 @@ export const BlogPostTemplate = ({
 }
 
 const BlogPost = ({ data }) => {
-  const { mdx: post } = data
+  const { markdownRemark: post } = data
   const meta = {
     title: post.frontmatter.title,
     description: post.frontmatter.description,
@@ -40,7 +40,7 @@ const BlogPost = ({ data }) => {
   return (
     <Layout pageMeta={meta}>
       <BlogPostTemplate
-        content={post.code.body}
+        content={post.html}
         description={post.frontmatter.description}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
@@ -55,11 +55,9 @@ export default BlogPost
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {
-    mdx(id: { eq: $id }) {
+    markdownRemark(id: { eq: $id }) {
       id
-      code {
-        body
-      }
+      html
       timeToRead
       frontmatter {
         date(formatString: "MMMM DD, YYYY")

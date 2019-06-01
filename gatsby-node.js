@@ -2,27 +2,16 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
-const componentWithMDXScope = require("gatsby-mdx/component-with-mdx-scope")
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   return graphql(`
     {
-      allMdx (limit: 1000) {
+      allMarkdownRemark(limit: 1000) {
         edges {
           node {
             id
-            parent {
-              ... on File {
-                name
-                sourceInstanceName
-              }
-            }
-            code {
-              scope
-            }
-            timeToRead
             fields {
               slug
             }
@@ -39,8 +28,8 @@ exports.createPages = ({ actions, graphql }) => {
       result.errors.forEach(e => console.error(e.toString()))
       return Promise.reject(result.errors)
     }
-    console.log(JSON.stringify(result.data.allMdx[0]));
-    const posts = result.data.allMdx.edges
+
+    const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach(edge => {
       const id = edge.node.id
@@ -56,21 +45,30 @@ exports.createPages = ({ actions, graphql }) => {
         },
       })
     })
-  })
-}
 
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      modules: [path.resolve(__dirname, "src"), "node_modules"],
-      alias: { $components: path.resolve(__dirname, "src/components") }
-    }
-  })
-}
+    // Tag pages:
+    let tags = []
+    // Iterate through each post, putting all found tags into `tags`
+    posts.forEach(edge => {
+      if (_.get(edge, `node.frontmatter.tags`)) {
+        tags = tags.concat(edge.node.frontmatter.tags)
+      }
+    })
+    // Eliminate duplicate tags
+    tags = _.uniq(tags)
 
-exports.onCreateBabelConfig = ({ actions }) => {
-  actions.setBabelPlugin({
-    name: "@babel/plugin-proposal-export-default-from"
+    // Make tag pages
+    tags.forEach(tag => {
+      const tagPath = `/tags/${_.kebabCase(tag)}/`
+
+      createPage({
+        path: tagPath,
+        component: path.resolve(`src/templates/tags.js`),
+        context: {
+          tag,
+        },
+      })
+    })
   })
 }
 
@@ -78,30 +76,12 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   fmImagesToRelative(node) // convert image paths for gatsby images
 
-  if (node.internal.type === `Mdx`) {
-    const parent = getNode(node.parent);
-    let value = parent.relativePath.replace(parent.ext, "")
-
-    if (value === "index") {
-      value = ""
-    }
-
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({ node, getNode })
     createNodeField({
       name: `slug`,
       node,
-      value: `/${value}`
-    })
-
-    createNodeField({
-      name: "id",
-      node,
-      value: node.id
-    })
-
-    createNodeField({
-      name: "title",
-      node,
-      value: node.frontmatter.title || startCase(parent.name)
+      value,
     })
   }
 }

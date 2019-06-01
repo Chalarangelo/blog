@@ -36,7 +36,7 @@ const PostCard = ({ post }) => {
 class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
-    const { edges: posts } = data.allMdx
+    const { edges: posts } = data.allMarkdownRemark
 
     return (
       <div className="container">
@@ -44,7 +44,7 @@ class BlogRoll extends React.Component {
           {posts &&
             posts.map(({ node }) => (
               <PostCard key={node.id} post={node} />
-          ))}
+            ))}
         </section>
       </div>
     )
@@ -53,7 +53,7 @@ class BlogRoll extends React.Component {
 
 BlogRoll.propTypes = {
   data: PropTypes.shape({
-    allMdx: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
     }),
   }),
@@ -63,7 +63,7 @@ export default () => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
-        allMdx(
+        allMarkdownRemark(
           sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "blog-post" } } }
         ) {
@@ -71,10 +71,8 @@ export default () => (
             node {
               excerpt(pruneLength: 400)
               id
+              html
               timeToRead
-              code {
-                body
-              }
               fields {
                 slug
               }
