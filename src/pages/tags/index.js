@@ -2,6 +2,7 @@ import React from 'react'
 import { kebabCase } from 'lodash'
 import { Link, graphql } from 'gatsby'
 import Layout from '../../components/common/Layout'
+import NewsletterForm from '../../components/common/NewsletterForm'
 
 const TagsPage = ({
   data: {
@@ -24,6 +25,7 @@ const TagsPage = ({
           </ul>
         </section>
       </div>
+      <NewsletterForm />
     </Layout>
   )
 }

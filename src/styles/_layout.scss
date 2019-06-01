@@ -151,6 +151,9 @@
 .content-meta { 
     color: var(--color-secondary);
     font-size: 14px;
+    & a {
+        color: var(--color-secondary);
+    }
 }
 
 .site-main {

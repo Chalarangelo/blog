@@ -1,8 +1,10 @@
 import React from 'react'
-import { graphql } from 'gatsby'
+import { kebabCase } from 'lodash'
+import { graphql, Link } from 'gatsby'
 import Microlink from '@microlink/react'
 import parse from 'html-react-parser'
 import Layout from '../components/common/Layout'
+import NewsletterForm from '../components/common/NewsletterForm'
 
 export const BlogPostTemplate = ({
   content,
@@ -37,12 +39,16 @@ export const BlogPostTemplate = ({
 
   }
 
+  const tagText = tags.map((tag,i) => (
+    <> <Link key={`link-to-${tag}`} to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>{i === tags.length -1 ? '' : ' ·'}</>
+  ))
+
   return (
     <div className="container">
       <article className="content">
         <section className="post-full-content">
           <h1 className="content-title">{title}</h1>
-          <p className="content-meta">{date} · {timeToRead} min read</p>
+          <p className="content-meta">{date} · {timeToRead} min read &mdash;{tagText}</p>
           <section 
             className="content-body load-external-scripts" 
           >
@@ -75,6 +81,7 @@ const BlogPost = ({ data }) => {
         date={post.frontmatter.date}
         timeToRead={post.timeToRead}
       />
+      <NewsletterForm />
     </Layout>
   )
 }

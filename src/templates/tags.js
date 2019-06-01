@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/common/Layout'
 import PostCard from '../components/common/PostCard'
 import splash from '../img/pankaj-patel-516695-unsplash.jpeg'
+import NewsletterForm from '../components/common/NewsletterForm'
 
 
 const TagRoute = (props) => {
@@ -24,6 +25,7 @@ const TagRoute = (props) => {
             ))}
         </section>
       </div>
+      <NewsletterForm />
     </Layout>
   )
 }
@@ -54,6 +56,7 @@ export const tagPageQuery = graphql`
           }
           frontmatter {
             title
+            tags
             templateKey
             date(formatString: "MMMM DD, YYYY")
             featuredpost

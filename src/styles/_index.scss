@@ -93,3 +93,68 @@
 .post-card-avatar .default-avatar {
     width: 26px;
 }
+
+.newsletter-form {
+    padding: 20px 0 40px 0;
+    margin: 1.8rem 0 0.4rem;
+    text-align:center;
+    font-size: 1.3rem;
+}
+
+.newsletter-form h3 {
+    font-size: 3rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+    margin-top: 0.3rem;
+    margin-bottom: 0.9rem;
+}
+
+.newsletter-form label {
+    padding-right: 18px;
+}
+
+:placeholder-shown {
+  color: var(--color-secondary);
+}
+::-placeholder {
+  color: var(--color-secondary);
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: var(--color-secondary);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: var(--color-secondary);
+}
+
+.newsletter-input {
+    padding: 0.6rem 0.8rem 0.35rem;
+    font-size: 1.6rem;
+    border: none;
+    border-bottom: 1.5px solid var(--color-border);
+    width: 254px;
+    &:hover, &:focus {
+        border-color: var(--color-primary);
+    }
+}
+
+.newsletter-submit {
+    background: var(--color-base);
+    padding: 0.6rem 3.8rem 0.35rem;
+    width: 254px;
+    border: none;
+    opacity: 0.85;
+    color: var(--color-bg);
+    &:hover, &:focus {
+        opacity: 1;
+    }
+    margin: 0.3em 0.2em;
+    font-size: 1.6rem;
+    border-radius: 999px;
+}
+
+.post-card-meta {
+    color: var(--color-secondary);
+    font-size: 14px;
+    line-height: 1.4em;
+    margin-bottom: 0.6em;
+}

@@ -10,8 +10,8 @@ const PostCard = ({ post }) => {
           <div className="post-card-image" style={{
             backgroundImage: `url(${post.frontmatter.featuredimage.childImageSharp.fluid.src})`,
           }}></div>}
-        {post.frontmatter.featuredpost && <span>Featured</span>}
         <h2 className="post-card-title">{post.frontmatter.title}</h2>
+        <p className="post-card-meta">{post.frontmatter.tags.join(' · ')}</p>
       </header>
       <section className="post-card-excerpt">{post.excerpt}</section>
       <footer className="post-card-footer">
