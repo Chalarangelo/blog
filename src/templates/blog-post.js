@@ -12,16 +12,21 @@ export const BlogPostTemplate = ({
   date,
   timeToRead
 }) => {
+  let updatedContent = content
+  try {
+    updatedContent = parse(content).map(v => {
+      if (v.type === 'p')
+        if (v.props.children && !Array.isArray(v.props.children) && typeof v.props.children !== 'string')
+          if (v.props.children.props.href === v.props.children.props.children) {
+            let url = v.props.children.props.href
+            return <><Microlink key={`micro-${url}`} url={url} /><br /></>
+          }
+      return v;
+    })
+  }
+  catch {
 
-  let updatedContent = parse(content).map(v => {
-    if (v.type === 'p')
-      if (v.props.children && !Array.isArray(v.props.children) && typeof v.props.children !== 'string')
-        if (v.props.children.props.href === v.props.children.props.children) {
-          let url = v.props.children.props.href
-          return <><Microlink key={`micro-${url}`} url={url} /><br /></>
-        }
-    return v;
-  })
+  }
 
   return (
     <div className="container">
