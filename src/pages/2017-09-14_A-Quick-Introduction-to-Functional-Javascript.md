@@ -16,7 +16,7 @@ tags:
 
 **Functional programming** is one of the hottest trends right now and there’s a lot of good arguments about why one might want to utilize it in their code. I’m not going to go into a lot of detail about all of the concepts and ideas of functional programming here, however I will try to provide a demonstrative guide of how to use functional programming in everyday situations involving **Javascript**.
 
-![splash](/img/1-w91eh65v6nxTs2AhLhyRNA.jpeg)
+![](/img/1-w91eh65v6nxTs2AhLhyRNA.jpeg)
 
 > Functional programming is a programming paradigm that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.
 

@@ -13,7 +13,7 @@ tags:
  - Frontend Development
 ---
 
-![splash](/img/1-23KtUDuCv_mOboccUiZGtg.png)
+![](/img/1-23KtUDuCv_mOboccUiZGtg.png)
 
 Javascript might seem like a pretty approachable programming language to most people, however certain concepts can prove quite tricky for beginners. One of the most commonly brought-up topics is that of **variable scope** and what **closures** are, so in this artile I will try to introduce these concepts in a beginner-friendly way.
 
