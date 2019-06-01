@@ -1,5 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
+import Microlink from '@microlink/react'
+import parse from 'html-react-parser'
 import Layout from '../components/common/Layout'
 
 export const BlogPostTemplate = ({
@@ -10,6 +12,17 @@ export const BlogPostTemplate = ({
   date,
   timeToRead
 }) => {
+
+  let updatedContent = parse(content).map(v => {
+    if (v.type === 'p')
+      if (v.props.children && !Array.isArray(v.props.children) && typeof v.props.children !== 'string')
+        if (v.props.children.props.href === v.props.children.props.children) {
+          let url = v.props.children.props.href
+          return <><Microlink key={`micro-${url}`} url={url} /><br /></>
+        }
+    return v;
+  })
+
   return (
     <div className="container">
       <article className="content">
@@ -18,8 +31,9 @@ export const BlogPostTemplate = ({
           <p className="content-meta">{date} · {timeToRead} min read</p>
           <section 
             className="content-body load-external-scripts" 
-            dangerouslySetInnerHTML={{__html: content}}
-          />
+          >
+            {updatedContent}
+          </section>
         </section>
       </article>
     </div>

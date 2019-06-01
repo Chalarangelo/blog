@@ -185,3 +185,8 @@
 .tag-list-content {
     column-count: 3;
 }
+
+/* purgecss ignore */
+.microlink_card {
+    max-width: 100% !important;
+}
