@@ -2,18 +2,16 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/common/Layout'
+import PostCard from '../components/common/PostCard'
 import splash from '../img/pankaj-patel-516695-unsplash.jpeg'
 
 class TagRoute extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges
-    const postLinks = posts.map(post => (
-      <li key={post.node.fields.slug}>
-        <Link to={post.node.fields.slug}>
-          <h2 className="is-size-2">{post.node.frontmatter.title}</h2>
-        </Link>
-      </li>
-    ))
+    const postLinks = posts &&
+      posts.map(({ node }) => (
+        <PostCard key={node.id} post={node} />
+      ))
     const tag = this.props.pageContext.tag
     const title = this.props.data.site.siteMetadata.title
     const totalCount = this.props.data.allMarkdownRemark.totalCount
@@ -23,8 +21,16 @@ class TagRoute extends React.Component {
 
     return (
       <Layout pageMeta={{featuredImage: splash}}>
-        <section className="section">
-          <Helmet title={`${tag} | ${title}`} />
+        <div className="container">
+          <h3 className="tag-title">{tagHeader}</h3>
+          <section className="post-feed">
+            {posts &&
+              posts.map(({ node }) => (
+                <PostCard key={node.id} post={node} />
+              ))}
+          </section>
+        </div>
+        {/* <section className="section">
           <div className="container content">
             <div className="columns">
               <div
@@ -39,7 +45,7 @@ class TagRoute extends React.Component {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
       </Layout>
     )
   }
@@ -62,11 +68,25 @@ export const tagPageQuery = graphql`
       totalCount
       edges {
         node {
+          excerpt(pruneLength: 400)
+          id
+          html
+          timeToRead
           fields {
             slug
           }
           frontmatter {
             title
+            templateKey
+            date(formatString: "MMMM DD, YYYY")
+            featuredpost
+            featuredimage {
+              childImageSharp {
+                fluid(maxWidth: 800, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
