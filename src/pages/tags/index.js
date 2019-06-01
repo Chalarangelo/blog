@@ -6,16 +6,14 @@ import Layout from '../../components/common/Layout'
 const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
-    site: {
-      siteMetadata: { title },
-    },
   },
 }) => {
   return (
     <Layout isHome>
       <div className="container">
+        <h3 className="tag-title">Tags</h3>
         <section className="tag-list">
-          <ul>
+          <ul className="tag-list-content">
             {group.map(tag => (
               <li key={tag.fieldValue}>
                 <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
