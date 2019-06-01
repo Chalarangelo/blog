@@ -10,7 +10,9 @@ featuredpost: false
 featuredimage: /img/1-xvh39qexnrcgex8-vohs7a.png
 tags:
   - mini.css
-  - ''
+  - Web Development
+  - CSS
+  - Web Design
 ---
 In this article, I am going to explain why [mini.css](http://minicss.org/) is a worthwhile addition to the CSS framework ecosystem, as well as the types of projects that will most benefit from using it.
 

@@ -21,19 +21,13 @@ export const BlogPostTemplate = ({
             let url = v.props.children.props.href
             if(url.indexOf('codepen.io') !== -1)
               return (
-                <>
-                  <iframe key={`codepen-${url}`} height="440" style={{width: '100%;'}} scrolling="no" src={`${url}?height=440&theme-id=0&default-tab=html,result`} frameborder="no" allowtransparency="true" allowfullscreen="true">
-                    <a href={url} target="_blank" rel="noopener noreferrer">View on Codepen</a>
-                  </iframe>
-                  <br/>
-                </>
+                <iframe title={`codepen-${url}`} key={`codepen-${url}`} height="440" style={{width: '100%;', marginBottom: '1.5rem'}} scrolling="no" src={`${url}?height=440&theme-id=0&default-tab=html,result`} frameborder="no" allowtransparency="true" allowfullscreen="true">
+                  <a href={url} target="_blank" rel="noopener noreferrer">View on Codepen</a>
+                </iframe>
               )
             else
               return (
-                <>
-                  <Microlink key={`micro-${url}`} url={url} />
-                  <br />
-                </>
+                <Microlink key={`micro-${url}`} url={url} style={{ width: '100%;', marginBottom: '1.5rem' }}/>
               )
           }
       return v;

@@ -10,6 +10,9 @@ featuredpost: false
 featuredimage: /img/1-xvh39qexnrcgex8-vohs7a.png
 tags:
   - mini.css
+  - Web Development
+  - CSS
+  - Web Design
 ---
 In this series, we will be walking through some basic ideas and techniques that will help you get started with [mini.css](http://minicss.org/), as well as understand the fundamental concepts behind it.
 
@@ -23,9 +26,9 @@ In this series, we will be walking through some basic ideas and techniques that 
 
 Picking up a new tool can be quite intimidating, especially when it’s one that affects a lot of aspects of your project. Front-end tools, and especially CSS frameworks, are some of the worst offenders in this kind of situation, as they usually force you to alter so much of your existing code and/or workflow. Usually, documentation is unclear, opinionated styles can get in the way and, before you know it, half your website is a mess and you have to redesign almost everything that is not pure textual content.
 
-In this series of articles, I will try to help you get started with one front-end tool I developed, **mini.css**, creating some simple template projects and exploring the ways it can benefit you in the long run. Before we start though, I’d recommend you read [my previous article](/2019-06-01-5-reasons-to-try-out-mini-css/) on why you might want to try it out, as well as brush up on your CSS and HTML skills before you get started.
+In this series of articles, I will try to help you get started with one front-end tool I developed, **mini.css**, creating some simple template projects and exploring the ways it can benefit you in the long run. Before we start though, I’d recommend you read [my previous article](/2017-05-17-5-reasons-to-try-out-mini-css/) on why you might want to try it out, as well as brush up on your CSS and HTML skills before you get started.
 
-https://blog.chalarangelo.me/2019-06-01-5-reasons-to-try-out-mini-css/
+https://blog.chalarangelo.me/2017-05-17-5-reasons-to-try-out-mini-css/
 
 ## Typography basics
 
