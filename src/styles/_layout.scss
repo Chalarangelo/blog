@@ -158,17 +158,23 @@
 }
 
 /* purgecss ignore */
-.gatsby-resp-image-wrapper {
+:not(.gatsby-resp-image-figure) > .gatsby-resp-image-wrapper, .gatsby-resp-image-figure {
     width: 100%;
     margin: 0 0 3vw;
+    position: relative;
 }
 /* purgecss ignore */
 @media (min-width: 900px) {
     /* purgecss ignore */
-    .gatsby-resp-image-wrapper {
+    :not(.gatsby-resp-image-figure) > .gatsby-resp-image-wrapper, .gatsby-resp-image-figure {
         width: 800px;
         left: -40px;
     }
+}
+/* purgecss ignore */
+.gatsby-resp-image-figcaption {
+    text-align: center;
+    color: var(--color-secondary);
 }
 
 .tag-title {

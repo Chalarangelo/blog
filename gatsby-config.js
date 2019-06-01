@@ -50,6 +50,7 @@ module.exports = {
               // base for generating different widths of each image.
               linkImagesToOriginal: false,
               maxWidth: 2048,
+              showCaptions: true,
             },
           },
           {
