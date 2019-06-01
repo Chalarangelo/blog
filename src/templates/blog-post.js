@@ -19,7 +19,22 @@ export const BlogPostTemplate = ({
         if (v.props.children && !Array.isArray(v.props.children) && typeof v.props.children !== 'string')
           if (v.props.children.props.href === v.props.children.props.children) {
             let url = v.props.children.props.href
-            return <><Microlink key={`micro-${url}`} url={url} /><br /></>
+            if(url.indexOf('codepen.io') !== -1)
+              return (
+                <>
+                  <iframe key={`codepen-${url}`} height="440" style={{width: '100%;'}} scrolling="no" src={`${url}?height=440&theme-id=0&default-tab=html,result`} frameborder="no" allowtransparency="true" allowfullscreen="true">
+                    <a href={url} target="_blank" rel="noopener noreferrer">View on Codepen</a>
+                  </iframe>
+                  <br/>
+                </>
+              )
+            else
+              return (
+                <>
+                  <Microlink key={`micro-${url}`} url={url} />
+                  <br />
+                </>
+              )
           }
       return v;
     })
