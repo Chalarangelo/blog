@@ -114,19 +114,19 @@ dd {
     margin: 0 0 5px 0;
     text-align: left;
 }
-
+/* purgecss ignore */
 blockquote {
     margin: 0.3em 0 1.8em;
     padding: 0 1.6em 0 1.6em;
     border-left: #cbeafb 0.5em solid;
 }
-
+/* purgecss ignore */
 blockquote p {
     margin: 0.8em 0;
     font-size: 1.2em;
     font-weight: 300;
 }
-
+/* purgecss ignore */
 blockquote small {
     display: inline-block;
     margin: 0.8em 0 0.8em 1.5em;
@@ -134,13 +134,15 @@ blockquote small {
     opacity: 0.8;
 }
 /* Quotation marks */
+/* purgecss ignore */
 blockquote small:before {
     content: "\2014 \00A0";
 }
-
+/* purgecss ignore */
 blockquote cite {
     font-weight: bold;
 }
+/* purgecss ignore */
 blockquote cite a {
     font-weight: normal;
 }

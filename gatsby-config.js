@@ -36,6 +36,7 @@ module.exports = {
       options: {
         plugins: [
           'gatsby-remark-unwrap-images',
+          'gatsby-remark-embed-gist',
           {
             resolve: 'gatsby-remark-relative-images',
             options: {
