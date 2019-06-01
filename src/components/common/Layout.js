@@ -4,7 +4,7 @@ import Footer from './Footer'
 import Navbar from './Navbar'
 import '../../styles/all.scss'
 import useSiteMetadata from '../meta/SiteMetadata'
-import splash from '../img/pankaj-patel-516695-unsplash.jpeg'
+import splash from '../../img/pankaj-patel-516695-unsplash.jpeg'
 
 /**
 * Main layout component
